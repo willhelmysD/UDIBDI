@@ -43,13 +43,6 @@ RENAME TABLE tabla1 TO nuevo_nombre1, tabla2 TO nuevo_nombre2;
 SET FOREIGN_KEY_CHECKS = 0; -- Desactiva las restricciones
 SET FOREIGN_KEY_CHECKS = 1; -- Activa las restricciones
 
-ALTER TABLE nombre_tabla DROP PRIMARY KEY;
-ALTER TABLE nombre_tabla DROP FOREIGN KEY nombre_restriccion;
-ALTER TABLE nombre_tabla DROP PRIMARY KEY; -- Eliminar la llave primaria existente
-ALTER TABLE nombre_tabla ADD PRIMARY KEY (nueva_columna); -- Agregar la nueva llave primaria
-
-ALTER TABLE nombre_tabla DROP FOREIGN KEY nombre_restriccion; -- Eliminar la llave foránea existente
-ALTER TABLE nombre_tabla ADD CONSTRAINT nombre_nueva_restriccion FOREIGN KEY (columna) REFERENCES tabla_referenciada(columna_referenciada); -- Agregar la nueva llave foránea
 
 SHOW TABLES;
 USE nombre_base_datos;
@@ -59,5 +52,26 @@ SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE, COLUMN_TYPE, IS_NULLABLE, COLUMN_KEY,
 FROM information_schema.COLUMNS
 WHERE TABLE_SCHEMA = 'nombre_base_datos';
 
+-- agregar
+ALTER TABLE <tabla>
+ADD <campo> <tipo>[(<longitud>)][NOT NULL][UNIQUE][PRIMARY KEY]
+[CHECK <condición>][DEFAULT <valor>];
 
+-- modificar
+ALTER TABLE <tabla>
+ALTER <campo> {TYPE <tipo>[(<longitud>)]|DROP DEFAULT};
 
+– Borrar un campo:
+ALTER TABLE <tabla>
+DROP <campo>;
+
+Eliminación de una tabla.
+DROP TABLE <tabla>;
+
+ALTER TABLE nombre_tabla DROP PRIMARY KEY;
+ALTER TABLE nombre_tabla DROP FOREIGN KEY nombre_restriccion;
+ALTER TABLE nombre_tabla DROP PRIMARY KEY; -- Eliminar la llave primaria existente
+ALTER TABLE nombre_tabla ADD PRIMARY KEY (nueva_columna); -- Agregar la nueva llave primaria
+
+ALTER TABLE nombre_tabla DROP FOREIGN KEY nombre_restriccion; -- Eliminar la llave foránea existente
+ALTER TABLE nombre_tabla ADD CONSTRAINT nombre_nueva_restriccion FOREIGN KEY (columna) REFERENCES tabla_referenciada(columna_referenciada); -- Agregar la nueva llave foránea
