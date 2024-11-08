@@ -7,8 +7,26 @@ use nombre_base_datos;
 CREATE TABLE if not exists nombre_tabla (
   columna1 tipo_dato restricciones,
   columna2 tipo_dato restricciones,
-  ...
+  columna3 tipo_dato
+  primary key(columna1),
+  foreign key(columna3) reference tabla2(comulunaID)
 )engine=innodb;
+
+CREATE TABLE if not exists continente(
+       continenteID int auto_increment not null,
+      nombre varchar(45) not null,
+      primary key(id),      
+)engine=innodb;
+
+CREATE TABLE if not exists pais(
+       PaisID int auto_increment not null,
+      nombre varchar(45) not null,
+      continenteFK int not null,
+      primary key(id),      
+      foreing key(continenteFK) references continente(continenteID)
+)engine=innodb;
+
+
 
 
 ALTER TABLE nombre_tabla ADD nombre_columna tipo_dato restricciones;
@@ -40,5 +58,6 @@ SHOW COLUMNS FROM nombre_tabla;
 SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE, COLUMN_TYPE, IS_NULLABLE, COLUMN_KEY, EXTRA
 FROM information_schema.COLUMNS
 WHERE TABLE_SCHEMA = 'nombre_base_datos';
+
 
 
