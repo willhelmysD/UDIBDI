@@ -1,0 +1,32 @@
+#AVG -> promedio
+#count -> total registros
+#SUM -> suma valores
+#max -> valor maximo
+#min -> valor min
+#select * from scv;
+#select categoria, SUM(precio) as total from scv GROUP BY categoria order by total;
+#select categoria, AVG(precio) as total from scv GROUP BY categoria having categoria='cafes' or categoria = 'bebidas';
+#select categoria, COUNT(categoria) as tipo from scv group by categoria; 
+#select categoria, MAX(precio) as precio from scv GROUP BY categoria;
+
+# select nombre from scv where precio = (select MAX(precio) from scv);
+#select nombre, categoria, MIN(precio) as precio from scv GROUP BY categoria;
+#select * from scv where categoria = 'bebidas' order by precio
+SELECT * FROM toroducto WHERE nprecio BETWEEN 200 AND 360;
+
+SELECT * FROM Customers WHERE CustomerName LIKE 'a%';
+SELECT Count(*) AS DistinctCountries FROM (SELECT DISTINCT Country FROM Customers);
+
+/*
+GROUP BY: Agrupa filas con valores similares.
+WHERE: Filtra filas antes de la agrupación o agregación.
+HAVING: Filtra grupos después de la agregación.
+ORDER BY: Ordena los resultados.
+JOIN: Combina filas de dos o más tablas.
+LIMIT / OFFSET: Limita y desplaza los resultados.
+DISTINCT: Devuelve filas únicas.
+UNION / UNION ALL: Combina resultados de múltiples consultas.
+EXISTS: Verifica si existe un valor en una subconsulta.
+IN: Comprueba si un valor está en un conjunto de valores.
+BETWEEN: Selecciona valores dentro de un rango.
+*/
